@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link   rel="shortcut icon" href="http://localhost:84/iot/images/engrane.png"> 
+    <title>Contactanos IOT</title>
+    <!--Normalizacion y Estilos-->
+    <link rel="stylesheet" type="text/css" href="http://localhost:84/iot/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="http://localhost:84/iot/css/styles.css">
+    <!--Fuentes-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,700;0,900;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="nav_index">
+            <a class="logo_ld" href="https://www.lineadirecta.com.co/" target="_blank">
+            <img src="http://localhost:84/iot/images/logo_arty_ld.png"  alt="Logo-principal_1">
+            </a>
+            <a class="logo_up" href="https://www.unipamplona.edu.co/" target="_blank">
+            <img src="http://localhost:84/iot/images/logo_up.png">
+            </a>
+        </nav>
+    </header>
+    <!-- Inicio Menu desplegable -->
+    <div id="side_menu" class="side_menu_collapsed">
+        <!--Encabezado del menu lateral desplegable-->
+        <div id="side_header">
+            <div id="side_menu_btn">
+                <div class="side_btn_hamburger sh1"></div>
+                <div class="side_btn_hamburger sh2"></div>
+                <div class="side_btn_hamburger sh3"></div>
+            </div>
+        </div>
+        <div id="side_menu_items">
+            <div class="side_item">
+                <a  href="http://localhost:84/iot/index.html">
+                    <div class="side_title"><span>Dashboard</span></div>
+                </a>
+            </div>
+            <div class="side_item">
+                <a  href="http://localhost:84/iot/documentacion.html">
+                    <div class="side_title"><span>Documentación</span></div>
+                </a>
+            </div>
+            <div class="side_item">
+                <a  href="http://localhost:84/iot/acerca.html">
+                    <div class="side_title"><span>Acerca del TG</span></div>
+                </a>
+            </div>
+            <div class="side_item">
+                <a  href="http://localhost:84/iot/contactanos.hmtl">
+                    <div class="side_title"><span>Contáctanos</span></div>
+                </a>
+            </div>
+            <div class="side_item">
+                <a  href="http://localhost:84/iot/loguin.html">
+                    <div class="side_title"><span>Salir</span></div>
+                </a>
+            </div>
+        </div>         
+    </div>
+     <!-- Fin Menu desplegable -->
+    <main class="wrap">
+        <div class="compresores">
+            <h1>Contáctanos</h1>
+        </div>
+        <form action="enviardata.php" method="post" class="form">
+            <p class="login">Soporte técnico</p>
+            <div class="cont_h2">
+                <h2 class="contenedor">INTERNET</h2>
+                <h2 class="contenedor">OF THINGS</h2>
+            </div>
+            <p class="desc_iot">Deja tus datos y nos contactaremos contigo para resolver tu solicitud.</p>
+            <label class="lbl"><span class="text-nomb">Teléfono</span></label>
+            <input type="text" name="telefono" placeholder="Ingrese su teléfono" required>
+            <label class="lbl"><span class="text-nomb">Correo Electrónico</span></label>
+            <input type="text" name="email" placeholder="Ingrese su E-mail" required>
+            <input type="submit" class="boton" id="button" name="enviar">
+        </form>
+    </main>
+    <div class="footer">
+        <p>Yeison Orrego | Todos los derechos reservados 2022 &#169 </p>
+    </div>
+    <script src="http://localhost:84/iot/js/desplegarMenu.js"></script>
+</body>
+</html>

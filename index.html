@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="http://localhost:84/iot/images/engrane.png"> 
+    <title>DashBoard IOT</title>
+    <!--Normalizacion y Estilos-->
+    <link rel="stylesheet" type="text/css" href="http://localhost:84/iot/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="http://localhost:84/iot/css/styles.css">
+    <!--Fuentes-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,700;0,900;1,900&display=swap" rel="stylesheet">
+    <!--Libreria fundamental para MQTT-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript"></script>
+    <!-- <script src="http://localhost:84/iot/mqttws31.js"></script> -->
+    <!--Libreria para fechas-->
+    <script src="https://momentjs.com/downloads/moment.js"></script>
+    <!--Libreria Chart JS-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    
+    
+</head>
+
+<body>
+    <header>
+        <nav class="nav_index">
+            <a class="logo_ld" href="https://www.lineadirecta.com.co/" target="_blank">
+            <img src="http://localhost:84/iot/images/logo_arty_ld.png"  alt="Logo-principal_1">
+            </a>
+            <a class="logo_up" href="https://www.unipamplona.edu.co/" target="_blank">
+            <img src="http://localhost:84/iot/images/logo_up.png">
+            </a>
+        </nav>
+    </header>
+    <!-- Inicio Menu desplegable -->
+    <div id="side_menu" class="side_menu_collapsed">
+        <!--Icono del menu lateral desplegable-->
+        <div id="side_header">
+            <div id="side_menu_btn">
+                <div class="side_btn_hamburger sh1"></div>
+                <div class="side_btn_hamburger sh2"></div>
+                <div class="side_btn_hamburger sh3"></div>
+            </div>
+        </div>
+        <div id="side_menu_items">
+            <div class="side_item">
+                <a  href="http://localhost:84/iot/index.html">
+                    <div class="side_title"><span>Dashboard</span></div>
+                </a>
+            </div>
+            <div class="side_item">
+                <a  href="http://localhost:84/iot/documentacion.html">
+                    <div class="side_title"><span>Documentación</span></div>
+                </a>
+            </div>
+            <div class="side_item">
+                <a  href="http://localhost:84/iot/acerca.html"   >
+                    <div class="side_title"><span>Acerca del TG</span></div>
+                </a>
+            </div>
+            <div class="side_item">
+                <a  href="http://localhost:84/iot/contactanos.html"    >
+                    <div class="side_title"><span>Contáctanos</span></div>
+                </a>
+            </div>
+            <div class="side_item">
+                <a  href="http://localhost:84/iot/loguin.html"  >
+                    <div class="side_title"><span>Salir</span></div>
+                </a>
+            </div>
+        </div>      
+    </div>
+    <main>
+        <div class="main_dash">
+            <div class="caja_humedad">
+                <h2>Humedad de la red</h2>
+                <div class="caja_gHumedad">
+                    <canvas id="humedadTk" width="300" height="80"></canvas>
+                </div>
+            </div>
+            <div class="caja_tanque">
+                <h2>Acumulador</h2>
+                <div class="cont_tanque">
+                    <div class="presure_tk">
+                        <canvas id="presionTk" width="300" height="100"></canvas>
+                    </div>
+                    <div id="alivioTk" class="alivio_tk">
+                        <h3>Eliminar condensados</h3>
+                        <div class="cont_btn">
+                            <input type="checkbox" id="btn_switch1" onclick="FuncionAlivioTK()">
+                            <label for="btn_switch1" class="lbl_switch1"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="caja_c1">
+                <h2>Compresor Principal</h2>
+                <div class="display_c1">
+                    <div class="c1_sup">
+                        <div class="presure_c1">
+                            <canvas id="presionC1"></canvas>
+                        </div>
+                        <div class="acciones_c1">
+                            <div class="encender_c1">
+                                <h3>Encender C1</h3>
+                                <div class="cont_btn">
+                                    <input type="checkbox" id="btn_switch2" onclick="FuncionEncenderC1()">
+                                    <label for="btn_switch2" class="lbl_switch2"></label>
+                                </div>
+                            </div>
+                            <div class="apagar_c1">
+                                <h3>Apagar C1</h3>
+                                <div class="cont_btn">
+                                    <input type="checkbox" id="btn_switch3" onclick="FuncionApagarC1()">
+                                    <label for="btn_switch3" class="lbl_switch3"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="caja_verc1">
+                        <div class="ver_c1">
+                            <div id="energizadoC1" class="energizado_c1">
+                                <h3>¿Energizado?</h3>
+                            </div>
+                            <div id="onoffC1" class="onoff_c1">
+                                <h3>¿On o Off?</h3>
+                            </div>
+                            <div id="paroC1" class="paro_c1">
+                                <h3>¿STOP?</h3>
+                            </div>
+                        </div>
+                        <button class="btn_consulta1" onclick="FuncionConsultarC1()">Consultar Estados</button>
+                    </div>
+                </div>
+            </div>
+            <div class="caja_c2">
+                <h2>Compresor Secundario</h2>
+                <div class="display_c2">
+                    <div class="c2_sup">
+                        <div class="presure_c2">
+                            <canvas id="presionC2"></canvas>
+                        </div>
+                        <div class="acciones_c2">
+                            <div class="encender_c2">
+                                <h3>Encender C2</h3>
+                                <div class="cont_btn">
+                                    <input type="checkbox" id="btn_switch4" onclick="FuncionEncenderC2()">
+                                    <label for="btn_switch4" class="lbl_switch4"></label>
+                                </div>
+                            </div>
+                            <div class="apagar_c2">
+                                <h3>Apagar C2</h3>
+                                <div class="cont_btn">
+                                    <input type="checkbox" id="btn_switch5" onclick="FuncionApagarC2()">
+                                    <label for="btn_switch5" class="lbl_switch5"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="caja_verc2">
+                        <div class="ver_c2">
+                            <div id="energizadoC2" class="energizado_c2">
+                                <h3>¿Energizado?</h3>
+                            </div>
+                            <div id="onoffC2" class="onoff_c2">
+                                <h3>¿On o Off?</h3>
+                            </div>
+                            <div id="paroC2" class="paro_c2">
+                                <h3>¿STOP?</h3>
+                            </div>
+                        </div>
+                        <button class="btn_consulta2" onclick="FuncionConsultarC2()">Consultar Estados</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div class="footer">
+        <p>Yeison Orrego | Todos los derechos reservados 2022 &#169 </p>
+    </div>
+    <!-- Esto de pronto sirva para el dashboard -->
+    <!--
+            <h1>Dashboard</h1>
+            <div>
+                <h2>Potenciometro</h2>
+            </div>
+            <div id="chartdiv"></div> <!-Esta es la direccion de la grafica de aguja--
+
+            <div>
+                <h2>Led Rojo</h2>
+            </div>
+
+            <div class="switch_conteiner">
+                <input type="checkbox" onclick="OnOff()"> <!-Se reliza llamado a funcion en caso de click--
+            </div>
+        -->
+    <script src="http://localhost:84/iot/js/desplegarMenu.js"></script>
+    <script src="http://localhost:84/iot/js/iot-mqtt.js"></script>
+    <script src="http://localhost:84/iot/graficas.js"></script>
+</body>
+
+</html>

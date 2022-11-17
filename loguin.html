@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="shortcut icon" href="http://localhost:84/iot/images/engrane.png"> 
+    <title>Inicio de Sesión</title>
+    <!--Normalizacion y Estilos-->
+    <link rel="stylesheet" type="text/css" href="http://localhost:84/iot/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="http://localhost:84/iot/css/styles.css">
+    <!--Fuentes-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,700;0,900;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header_loguin">
+        <nav class="nav_index">
+            <a class="logo_ld" href="https://www.lineadirecta.com.co/">
+                <img src="http://localhost:84/iot/images/logo_arty_ld.png"  alt="Logo-principal_1">
+            </a>
+            <a class="logo_up" href="https://www.unipamplona.edu.co/">
+                <img src="http://localhost:84/iot/images/logo_up.png">
+            </a>
+        </nav>
+    </header>
+    <main class="wrap">
+        <div class="compresores">
+            <h1>Inicia sesión</h1>
+        </div>
+        <form action="validar.php" method="post" class="form">
+            <p class="login">Inicio de sesión</p>
+            <div class="cont_h2">
+                <h2 class="contenedor">INTERNET</h2>
+                <h2 class="contenedor">OF THINGS</h2>
+            </div>
+            <p class="desc_iot">Interconectando la sala de compresores de ARTYTECMO</p>
+            <label class="lbl"><span class="text-nomb">Usuario</span></label>
+            <input type="text" name="username" placeholder="Ingrese su usuario" required>
+            <label class="lbl"><span class="text-nomb">Contraseña</span></label>
+            <input type="password" name="password" placeholder="Ingrese su contraseña" required>
+            <input type="submit" class="boton" id="button" value="Entrar">
+        </form>
+    </main>
+    <div class="footer">
+        <p>Yeison Orrego | Todos los derechos reservados 2022 &#169 </p>
+    </div>
+</body>
+</html>
